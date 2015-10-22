@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hiccup11.videotrans02" >
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!--uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" /-->
+    <!--允许应用程序改变网络状态-->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
+    <!--允许应用程序改变WIFI连接状态-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
+    <!--允许应用程序访问有关的网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!--允许应用程序访问WIFI网卡的网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <!--允许应用程序完全使用网络-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name = "android.permission.CAMERA" />
+
+    <uses-feature android:name = "android.hardware.camera" />
+
+    <uses-feature android:name = "android.hardware.camera.autofocus" />
+
+    <!-- 一般拍照和摄像的时候需要写到sd卡上，所以还有一向权限声明如下-->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!--真做摄像功能时，需要音频录制和视频录制功能，所以又需要下面两项权限声明-->
+
+    <uses-permission android:name="android.permission.RECORD_VIDEO"/>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".VideoTransMainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".MasterIntentService"
+            android:exported="true" >
+        </service>
+        <service
+            android:name=".SlaveIntentService"
+            android:exported="true"
+            android:permission="android.permission.SYSTEM_OVERLAY_WINDOW" >
+        </service>
+    </application>
+
+</manifest>
